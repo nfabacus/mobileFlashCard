@@ -1,14 +1,22 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { Component } from 'react'
+import { StyleSheet, Text, View, StatusBar } from 'react-native'
+import { createStore } from 'redux'
+import { Provider } from 'react-redux'
+import reducer from './reducers'
+import AddDeck from './components'
 
-export default class App extends React.Component {
+
+export default class App extends Component {
   render() {
     return (
-      <View style={styles.container}>
-        <Text>Open up App.js to start working on your app!</Text>
-        <Text>Changes you make will automatically reload.</Text>
-        <Text>Shake your phone to open the developer menu.</Text>
-      </View>
+      <Provider store={createStore(reducer)}>
+        <View style={styles.container}>
+          
+          <Text>Mobile Flashcards!</Text>
+          <AddDeck />
+
+        </View>
+      </Provider>
     );
   }
 }
